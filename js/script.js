@@ -10,3 +10,42 @@ const gatti = [
     {name: 'Gattina', age:4, color:'#0d0805', gender:'female'}
 ];
 
+gatti.forEach((element) => {
+    document.getElementById('container').innerHTML +=
+    `
+        ${element.name}: <i class="fas fa-cat" style="color:${element.color}"></i>
+    `;    
+});
+
+// Milestone 2: Dividere i gatti in due contenitori distinti in base al sesso e aggiungere a fianco di 
+// ogni gattino un fiocco colorato di rosa, se femmina, o di blu, se maschio. 
+// Il colore del fiocco deve essere più tenue se il gatto è più giovane, più scuro se il gatto è più vecchio.
+const maleCats = [];
+const femaleCats = [];
+
+const pink = '#f0b3d2';
+const blue = '#005fd9';
+
+const newGatti = gatti.map((element) => {
+    const name = element.name;
+    const age = element.age;
+    const color = element.color;
+    const gender = element.gender;
+
+    let ribbonColor = blue;
+    if (gender == 'female'){
+        ribbonColor = pink;
+    }
+       
+    const opacity = element.age /4; 
+    return {
+        name,
+        age,
+        color,
+        gender,
+        ribbon : {
+            color: ribbonColor,
+            opacity : opacity
+        }
+    }
+});
