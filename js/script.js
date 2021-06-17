@@ -49,3 +49,32 @@ const newGatti = gatti.map((element) => {
         }
     }
 });
+
+
+// Milestone 3: Creare un nuovo array con prima tutti i gattini femmina e poi tutti i gattini maschio, 
+// inserendo solamente nome, colore e opacità del fiocco per ogni gatto.
+const femaleGatti = newGatti.filter((element) =>{
+    return element.gender == "female";
+})
+femaleGatti.forEach((element) => {
+    document.getElementById('container').innerHTML += 
+    `
+    <br></br>
+    ${element.name} : <i class="fas fa-cat" style="color:${element.color}"></i>
+    <i class="fas fa-ribbon" style="color:${element.ribbon.color}; opacity:${element.ribbon.opacity}"></i>,
+
+    `;
+});
+
+const maleGatti = newGatti.filter((element) =>{
+    return element.gender == "male";
+})
+maleGatti.forEach((element) => {
+    document.getElementById('container').innerHTML += 
+    `
+    <br></br>
+    ${element.name} : <i class="fas fa-cat" style="color:${element.color}"></i>
+    <i class="fas fa-ribbon" style="color:${element.ribbon.color}; opacity:${element.ribbon.opacity}"></i>,
+
+    `;
+});
